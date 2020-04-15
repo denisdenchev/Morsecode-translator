@@ -34,7 +34,7 @@ const letters = [
   "7",
   "8",
   "9",
-  "0"
+  "0",
 ];
 const morseLetters = [
   ".___",
@@ -72,7 +72,7 @@ const morseLetters = [
   "______...",
   "_________..",
   "____________.",
-  "_______________"
+  "_______________",
 ];
 
 // const morseLetters = [". ___", "___ . . .", "___ . ___ .", "___ . .", ".", ". . ___ .", "___ ___ .", ". . . .", ". .", ". ___ ___ ___", "___ . ___", ". ___ . .", "___ ___", "___ .", "___ ___ ___", ". ___ ___ .", "___ ___ . ___", ". ___ .", ". . .", "_", ". . ___", ". . . ___", ". ___ ___", "___ . . ___", "___ . ___ ___", "___ ___ . .", ". ___ ___ ___ ___", ". . ___ ___ ___", ". . . ___ ___", ". . . . ___", ". . . . .", "___ . . . .", "___ ___ . . .", "___ ___ ___ . .", "___ ___ ___ ___ .", "___ ___ ___ ___ ___"];
@@ -144,9 +144,10 @@ const morseLetters = [
 const convert = () => {
   const inputValue = document.getElementById("message").value.split(" ");
 
-  const copyOfInputValue = inputValue.map(lowCase => {
+  const copyOfInputValue = inputValue.map((lowCase) => {
     return lowCase.toLowerCase();
   });
+  console.log(copyOfInputValue);
   let indexOfLetters = "";
   for (index = 0; index < copyOfInputValue.length; index++) {
     for (j = 0; j <= 36; j++) {

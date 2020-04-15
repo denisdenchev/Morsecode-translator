@@ -1,4 +1,4 @@
-const letters = [
+const alphabetLetters = [
   "a",
   "b",
   "c",
@@ -34,7 +34,7 @@ const letters = [
   "7",
   "8",
   "9",
-  "0"
+  "0",
 ];
 
 const morseLetters = [
@@ -73,20 +73,33 @@ const morseLetters = [
   "______...",
   "_________..",
   "____________.",
-  "_______________"
+  "_______________",
 ];
 
-const mixedLetters = ["a", "b", "c", "d", "E", "F"];
-const mixedWords = ["Baba", "__ . . .. _____ . . .. ___"];
-
-const wat = () => {
-  const inputText = document.getElementById("message").value;
-  const newInputText = inputText.toLocaleLowerCase().split("");
-  console.log(newInputText);
+const getInputValue = () => {
+  const inputValue = document
+    .getElementById("message")
+    .value.toLowerCase()
+    .split("");
+  console.log(inputValue);
+  inputValue.forEach((letter) => {
+    const indexOfLetter = alphabetLetters.indexOf(letter);
+    console.log(morseLetters[indexOfLetter]);
+    document.getElementById("output").innerHTML += morseLetters[indexOfLetter];
+  });
 };
+
+// const myFunction = () => {
+//   var char = "a";
+//   var indexOfChar = alphabetLetters.indexOf(char);
+//   console.log(indexOfChar);
+// };
 
 //get input form DOM
 //if input is in letters, split it and change it to lower case
 //find its index number
 //use index number to display in morse letters
 // output the result
+// Every letter in inputValue
+// find its index number
+// use index number to get morse lette
