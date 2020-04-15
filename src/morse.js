@@ -35,6 +35,8 @@ const alphabetLetters = [
   "8",
   "9",
   "0",
+  " ",
+  " /",
 ];
 
 const morseLetters = [
@@ -74,6 +76,8 @@ const morseLetters = [
   "_________..",
   "____________.",
   "_______________",
+  " /",
+  " ",
 ];
 
 const getInputValue = () => {
@@ -81,6 +85,7 @@ const getInputValue = () => {
     .getElementById("message")
     .value.toLowerCase()
     .split("");
+
   console.log(inputValue);
   inputValue.forEach((letter) => {
     const indexOfLetter = alphabetLetters.indexOf(letter);
@@ -89,17 +94,6 @@ const getInputValue = () => {
   });
 };
 
-// const myFunction = () => {
-//   var char = "a";
-//   var indexOfChar = alphabetLetters.indexOf(char);
-//   console.log(indexOfChar);
-// };
-
-//get input form DOM
-//if input is in letters, split it and change it to lower case
-//find its index number
-//use index number to display in morse letters
-// output the result
-// Every letter in inputValue
-// find its index number
-// use index number to get morse lette
+const clearValues = () => {
+  window.location.reload(true);
+};
