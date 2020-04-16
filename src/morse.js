@@ -77,15 +77,14 @@ const morseLetters = [
   "____________.",
   "_______________",
   " /",
-  " ",
+  "",
 ];
 
-const getInputValue = () => {
+const displayInMorse = () => {
   const inputValue = document
     .getElementById("message")
     .value.toLowerCase()
     .split("");
-
   console.log(inputValue);
   inputValue.forEach((letter) => {
     const indexOfLetter = alphabetLetters.indexOf(letter);
@@ -93,6 +92,44 @@ const getInputValue = () => {
     document.getElementById("output").innerHTML += morseLetters[indexOfLetter];
   });
 };
+
+const displayInLetters = () => {
+  const inputValue = document
+    .getElementById("message")
+    .value
+    .split(" ");
+  console.log(inputValue);
+  inputValue.forEach((letter) => {
+    const indexOfLetter = morseLetters.indexOf(letter);
+    console.log(alphabetLetters[indexOfLetter]);
+    document.getElementById("output").innerHTML += alphabetLetters[indexOfLetter];
+  });
+}
+
+  const testMorse = (/^[^-.]+$/)
+  const testLetters = (/^[^a-zA-Z0-9]+$/)
+
+  const getInputValues = () => {
+  const inputValue = document
+  .getElementById("message").value
+
+  console.log(inputValue)
+  
+
+  testMorse.test(inputValue) ? alert("morse") : testLetters.test(inputValue) ? alert("letter") : null
+
+  
+}
+
+
+// var string = ".___"
+// var format = /[-.]+/;
+
+// if(format.test(string)){
+//   alert("a match");
+// } else {
+//   alert("not a match");
+// }
 
 const clearValues = () => {
   window.location.reload(true);
