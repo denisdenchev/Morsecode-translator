@@ -37,6 +37,9 @@ const alphabetLetters = [
   "0",
   " ",
   " /",
+  "?",
+  "!",
+  ",",
 ];
 
 const morseLetters = [
@@ -78,6 +81,9 @@ const morseLetters = [
   "_______________",
   " /",
   "",
+  "?",
+  "!",
+  ",",
 ];
 
 const displayInMorse = () => {
@@ -106,22 +112,35 @@ const displayInLetters = () => {
   });
 }
 
-  const testMorse = (/^[^-.]+$/)
-  const testLetters = (/^[^a-zA-Z0-9]+$/)
+const clearValues = () => {
+  window.location.reload(true);
+}
 
-  const getInputValues = () => {
+ 
+const displayTranslated = () => {   
+  document.getElementById("output").innerHTML = ""
   const inputValue = document
   .getElementById("message").value
-
-  console.log(inputValue)
+  const testMorse = (/^[^-.]+$/)
+  const testLetters = (/^[^a-zA-Z0-9]+$/)
+  testMorse.test(inputValue) ? displayInMorse() 
+  : testLetters.test(inputValue) ? displayInLetters() 
+  : alert("Use only latin letters or morse letters")
+}
   
 
-  testMorse.test(inputValue) ? alert("morse") : testLetters.test(inputValue) ? alert("letter") : null
 
+  
+
+const getInputValues = () => {
+  const inputValue = document
+  .getElementById("message").value
   
 }
 
 
+//___.___.
+  
 // var string = ".___"
 // var format = /[-.]+/;
 
@@ -130,7 +149,4 @@ const displayInLetters = () => {
 // } else {
 //   alert("not a match");
 // }
-
-const clearValues = () => {
-  window.location.reload(true);
-};
+  
