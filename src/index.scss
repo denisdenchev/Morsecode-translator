@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#inputArea {
+
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 80%;
+    margin: 20px auto 15px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 15px 0 0 0;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    input {
+        height: 30px;
+        width: 90%;
+        margin: 15px auto;
+        padding: 5px;
+        font-size: 1rem;
+        border-radius: 10px;
+        background-color: #eeeeee;
+        border-color: #000;
+        border-image: none;
+    }
+
+    #icons {
+        button {
+            background-color: none;
+        }
+    }
+
+    .fas {
+        font-size: 20px;
+    }
+    
+    section {
+
+        button {
+            padding: 5px;
+            margin: 15px 5px;
+            border-radius: 10px;
+            background-color: #eeeeee;
+            border-color: #000;
+            color: #000;
+            font-size: 20px;
+
+            &:hover {
+                cursor: pointer;;
+            }
+        }
+    }
+}
+
+#instructions {
+    width: 80%;
+    border: 2px solid red;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 5px;
+
+    h2 {
+        text-align: center;
+        margin: 5px;
+    }
+
+    p {
+        font-size: 20px;
+        margin: 5px;
+        font-weight: 550;
+    }
+}
+
+#outputArea {
+    border: 2px solid #000;
+    width: 80%;
+    margin: 15px auto;
+    border-radius: 10px;
+    padding: 5px;
+    
+
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        margin: 15px auto;
+        text-align: center;
+        
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #inputArea {
+        input {
+            width: 50%;
+        }
+    }
+} 
+
+@media only screen and (max-width: 1024px) {
+    #inputArea, #instructions, #outputArea {
+        width: 80%;
+    }
+} 

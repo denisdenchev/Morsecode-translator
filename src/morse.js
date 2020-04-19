@@ -116,7 +116,6 @@ const clearValues = () => {
   window.location.reload(true);
 }
 
- 
 const displayTranslated = () => {   
   document.getElementById("output").innerHTML = ""
   const inputValue = document
@@ -129,24 +128,145 @@ const displayTranslated = () => {
 }
   
 
+// const getInputValues = () => {
+//   const inputValue = document
+//   .getElementById("message").value
+// }
 
-  
 
-const getInputValues = () => {
-  const inputValue = document
-  .getElementById("message").value
-  
+window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+let finalTranscript = '';
+let recognition = new window.SpeechRecognition();
+
+
+recognition.interimResults = true;
+recognition.maxAlternatives = 10;
+recognition.continuous = true;
+recognition.lang = "en-GB"
+
+
+recognition.onresult = (event) => {
+
+    let interimTranscript = '';
+    for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+    let transcript = event.results[i][0].transcript;
+    if (event.results[i].isFinal) {
+        finalTranscript += transcript;
+    } else {
+        interimTranscript += transcript;
+    }
+    }
+    document.getElementById('message').value = `${finalTranscript}` + `${interimTranscript}`;
+}
+
+const listen = () => {
+recognition.start();
+}
+
+const stopListenint = () => {
+    recognition.stop()
 }
 
 
-//___.___.
-  
-// var string = ".___"
-// var format = /[-.]+/;
+const textToAudio = () => {
 
-// if(format.test(string)){
-//   alert("a match");
-// } else {
-//   alert("not a match");
+  // list of languages is probably not loaded, wait for it
+  if(window.speechSynthesis.getVoices().length == 0) {
+    window.speechSynthesis.addEventListener('voiceschanged', function() {
+      textToSpeech();
+    });
+  }
+  else {
+    // languages list available, no need to wait
+    textToSpeech()
+  }
+}
+
+
+
+const textToSpeech = () => {
+//get output value
+const outputValue = document.getElementById("output").innerHTML
+
+	// get all voices that browser offers
+	let available_voices = window.speechSynthesis.getVoices();
+
+	// this will hold an english voice
+	let english_voice = '';
+
+	// find voice by language locale "en-US"
+	// if not then select the first voice
+	for( i=0; i<available_voices.length; i++) {
+		if(available_voices[i].lang === 'en-UK') {
+			english_voice = available_voices[i];
+			break;
+		}
+	}
+	if(english_voice === '')
+		english_voice = available_voices[0];
+
+	// new SpeechSynthesisUtterance object
+	const utter = new SpeechSynthesisUtterance();
+	utter.rate = 1;
+	utter.pitch = 0.5;
+	utter.text = outputValue;
+	utter.voice = english_voice;
+
+	// event after text has been spoken
+	utter.onend = () => {
+		alert('Speech has finished');
+	}
+
+	// speak
+	window.speechSynthesis.speak(utter);
+}
+
+
+
+
+
+
+
+
+
+// var AudioContext = window.AudioContext || window.webkitAudioContext;
+// var ctx = new AudioContext();
+// var dot = 1.2 / 15;
+
+// document.getElementById("demo").onsubmit = function() {
+//     var t = ctx.currentTime;
+
+//     var oscillator = ctx.createOscillator();
+//     oscillator.type = "sine";
+//     oscillator.frequency.value = 600;
+
+//     var gainNode = ctx.createGain();
+//     gainNode.gain.setValueAtTime(0, t);
+
+//     this.code.value.split("").forEach(function(letter) {
+//         switch(letter) {
+//             case ".":
+//                 gainNode.gain.setValueAtTime(1, t);
+//                 t += dot;
+//                 gainNode.gain.setValueAtTime(0, t);
+//                 t += dot;
+//                 break;
+//             case "-":
+//                 gainNode.gain.setValueAtTime(1, t);
+//                 t += 3 * dot;
+//                 gainNode.gain.setValueAtTime(0, t);
+//                 t += dot;
+//                 break;
+//             case " ":
+//                 t += 7 * dot;
+//                 break;
+//         }
+//     });
+
+//     oscillator.connect(gainNode);
+//     gainNode.connect(ctx.destination);
+
+//     oscillator.start();
+
+//     return false;
 // }
-  

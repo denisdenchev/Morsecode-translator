@@ -6,14 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="morse.js" async defer></script>
+    <script src="https://kit.fontawesome.com/c6d689a9c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    Enter text you want to convert <input type="text" id="message" />
-    <button type="button" onclick="displayTranslated()">Translate</button>
-    <button type="button" onclick="clearValues()">Clear</button>
-    <p>Use double space inbetween words, if you are translating from morse to letters</p>
-    <p>Do not use dot (.) while you are using letters as it will read it as morse</p>
-    <h2 id="textInMorse">Your translated value:</h2>
-    <p id="output"></p>
+    <div id="inputArea">
+      <p>Enter the text you want to convert</p>
+      <input type="text" id="message" value="" />
+      <div id="icons">
+        <button type="button" onclick="listen()" ><i class="fas fa-microphone"></i></button>
+        <button type="button" onclick="stopListenint()"  ><i class="fas fa-microphone-slash"></i></i></button>
+      </div>
+      <section>
+        <button type="button" onclick="displayTranslated()">Translate</button>
+        <button type="button" onclick="clearValues()">Clear</button>
+    </section>
+    </div>
+    
+    <!-- <h2 id="speechOutput"></h2> -->
+    <div id="instructions">
+      <h2>Instructions</h2>
+      <p>1. Use single space between letters and double space between words, if you are translating from morse to letters!</p>
+      <p>2. Do not use dot (.) while you are using letters as it will read it as morse!</p>
+      <p>3. Only use LETTERS or MORSE letters, you cannot mix them up!</p>
+      <p>4. The symbol "/" is a word separator. </p>
+    </div>
+    <div id="outputArea">
+      <h2 >Your translated value:</h2>
+      <button type="button" onclick="textToAudio()"></button>
+      <h3 id="output"></h3>
+    </div>
   </body>
 </html>
