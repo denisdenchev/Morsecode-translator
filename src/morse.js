@@ -91,10 +91,10 @@ const displayInMorse = () => {
     .getElementById("message")
     .value.toLowerCase()
     .split("");
-  console.log(inputValue);
+  // console.log(inputValue);
   inputValue.forEach((letter) => {
     const indexOfLetter = alphabetLetters.indexOf(letter);
-    console.log(morseLetters[indexOfLetter]);
+    // console.log(morseLetters[indexOfLetter]);
     document.getElementById("output").innerHTML += morseLetters[indexOfLetter];
   });
 };
@@ -127,12 +127,6 @@ const displayTranslated = () => {
   : alert("Use only latin letters or morse letters")
 }
   
-
-// const getInputValues = () => {
-//   const inputValue = document
-//   .getElementById("message").value
-// }
-
 
 window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 let finalTranscript = '';
@@ -185,8 +179,9 @@ const textToAudio = () => {
 
 
 const textToSpeech = () => {
-//get output value
-const outputValue = document.getElementById("output").innerHTML
+  
+  //get output value
+  const outputValue = document.getElementById("output").innerHTML
 
 	// get all voices that browser offers
 	let available_voices = window.speechSynthesis.getVoices();
@@ -213,9 +208,9 @@ const outputValue = document.getElementById("output").innerHTML
 	utter.voice = english_voice;
 
 	// event after text has been spoken
-	utter.onend = () => {
-		alert('Speech has finished');
-	}
+	// utter.onend = () => {
+	// 	alert('Speech has finished');
+	// }
 
 	// speak
 	window.speechSynthesis.speak(utter);
@@ -223,50 +218,58 @@ const outputValue = document.getElementById("output").innerHTML
 
 
 
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const ctx = new AudioContext();
+const dot = 1.2 / 15;
+
+const createSound = () => {
+   const inputValue = document.getElementById("output").innerHTML
+
+    let time = ctx.currentTime;
+
+    const oscillator = ctx.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.value = 600;
+
+    const gainNode = ctx.createGain();
+    gainNode.gain.setValueAtTime(0, time);
+
+    inputValue.split("").forEach(function(letter) {
+        switch(letter) {
+            case ".":
+                gainNode.gain.setValueAtTime(1, time);
+                time += dot;
+                gainNode.gain.setValueAtTime(0, time);
+                time += dot;
+                break;
+            case "-":
+                gainNode.gain.setValueAtTime(1, time);
+                time += 3 * dot;
+                gainNode.gain.setValueAtTime(0, time);
+                time += dot;
+                break;
+            case " ":
+              time += 7 * dot;
+                break;
+        }
+    });
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.start();
+
+    return false;
+}
 
 
 
+const audioOutput = () => {
+  const translatedOutput = document.getElementById("output").innerHTML 
+  const testMorse = (/^[^-.]+$/)
+  const testLetters = (/^[^a-zA-Z0-9]+$/)
 
-
-
-// var AudioContext = window.AudioContext || window.webkitAudioContext;
-// var ctx = new AudioContext();
-// var dot = 1.2 / 15;
-
-// document.getElementById("demo").onsubmit = function() {
-//     var t = ctx.currentTime;
-
-//     var oscillator = ctx.createOscillator();
-//     oscillator.type = "sine";
-//     oscillator.frequency.value = 600;
-
-//     var gainNode = ctx.createGain();
-//     gainNode.gain.setValueAtTime(0, t);
-
-//     this.code.value.split("").forEach(function(letter) {
-//         switch(letter) {
-//             case ".":
-//                 gainNode.gain.setValueAtTime(1, t);
-//                 t += dot;
-//                 gainNode.gain.setValueAtTime(0, t);
-//                 t += dot;
-//                 break;
-//             case "-":
-//                 gainNode.gain.setValueAtTime(1, t);
-//                 t += 3 * dot;
-//                 gainNode.gain.setValueAtTime(0, t);
-//                 t += dot;
-//                 break;
-//             case " ":
-//                 t += 7 * dot;
-//                 break;
-//         }
-//     });
-
-//     oscillator.connect(gainNode);
-//     gainNode.connect(ctx.destination);
-
-//     oscillator.start();
-
-//     return false;
-// }
+  testMorse.test(translatedOutput) ? textToAudio() 
+  : testLetters.test(translatedOutput) ? createSound() 
+  : alert("Use only latin letters or morse letters")
+}

@@ -14,8 +14,8 @@
       <p>Enter the text you want to convert</p>
       <input type="text" id="message" value="" />
       <div id="icons">
-        <button type="button" onclick="listen()" ><i class="fas fa-microphone"></i></button>
-        <button type="button" onclick="stopListenint()"  ><i class="fas fa-microphone-slash"></i></i></button>
+        <button type="button" onclick="listen()" ><span class="fas fa-microphone"></span></button>
+        <button type="button" onclick="stopListenint()"  ><span class="fas fa-microphone-slash"></span></i></button>
       </div>
       <section>
         <button type="button" onclick="displayTranslated()">Translate</button>
@@ -33,7 +33,7 @@
     </div>
     <div id="outputArea">
       <h2 >Your translated value:</h2>
-      <button type="button" onclick="textToAudio()"></button>
+      <button type="button" onclick="audioOutput()"><span class="fas fa-headphones-alt"></span></button>
       <h3 id="output"></h3>
     </div>
   </body>

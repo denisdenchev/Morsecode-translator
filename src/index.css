@@ -41,7 +41,9 @@
 }
 
 #inputArea #icons button {
-  background-color: none;
+  background-color: transparent;
+  margin: 0 5px;
+  border: none;
 }
 
 #inputArea .fas {
@@ -52,7 +54,7 @@
   padding: 5px;
   margin: 15px 5px;
   border-radius: 10px;
-  background-color: #eeeeee;
+  background-color: transparent;
   border-color: #000;
   color: #000;
   font-size: 20px;
@@ -94,8 +96,21 @@
 }
 
 #outputArea h3 {
+  font-size: 25px;
   margin: 15px auto;
   text-align: center;
+}
+
+#outputArea button {
+  background-color: transparent;
+  border: none;
+}
+
+#outputArea button .fas {
+  background-color: none;
+  font-size: 25px;
+  border: transparent;
+  color: #000;
 }
 
 @media only screen and (max-width: 768px) {
