@@ -221,13 +221,14 @@ const textToSpeech = () => {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const ctx = new AudioContext();
 const dot = 1.2 / 15;
+let oscillator ;
 
-const createSound = () => {
+const morseToAudio = () => {
    const inputValue = document.getElementById("output").innerHTML
 
     let time = ctx.currentTime;
 
-    const oscillator = ctx.createOscillator();
+    oscillator = ctx.createOscillator();
     oscillator.type = "sine";
     oscillator.frequency.value = 600;
 
@@ -242,7 +243,7 @@ const createSound = () => {
                 gainNode.gain.setValueAtTime(0, time);
                 time += dot;
                 break;
-            case "-":
+            case "_":
                 gainNode.gain.setValueAtTime(1, time);
                 time += 3 * dot;
                 gainNode.gain.setValueAtTime(0, time);
@@ -264,12 +265,44 @@ const createSound = () => {
 
 
 
-const audioOutput = () => {
+const startAudio = () => {
   const translatedOutput = document.getElementById("output").innerHTML 
   const testMorse = (/^[^-.]+$/)
   const testLetters = (/^[^a-zA-Z0-9]+$/)
 
   testMorse.test(translatedOutput) ? textToAudio() 
-  : testLetters.test(translatedOutput) ? createSound() 
+  : testLetters.test(translatedOutput) ? morseToAudio() 
   : alert("Use only latin letters or morse letters")
 }
+
+const stopAudio = () => {
+  if (oscillator) {
+    oscillator.stop(0);
+    oscillator.disconnect();
+    // alert("You have stopped the sound")
+  }
+}
+
+let lastClick = 0;
+let delay = 5000;
+
+const setInterval = () => {
+  if (lastClick >= (Date.now() - delay))
+    return;
+  lastClick = Date.now();
+  
+  // do things
+  startAudio()
+}
+
+
+// const callSomething = () => {
+//     return console.log("hello")
+// }
+
+
+
+
+// audioOutput.addEventListener("click", startAudio);
+audioOutput.addEventListener("click", setInterval);
+stopAudioPlay.addEventListener("click", stopAudio);
