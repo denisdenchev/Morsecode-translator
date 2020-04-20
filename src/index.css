@@ -137,6 +137,7 @@ main #outputArea h3 {
   margin: 15px auto;
   text-align: center;
   color: #eeeeee;
+  letter-spacing: 5px;
 }
 
 main #outputArea #audioIcons {

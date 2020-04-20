@@ -286,7 +286,7 @@ const stopAudio = () => {
 let lastClick = 0;
 let delay = 5000;
 
-const setInterval = () => {
+const setTimeUnavailable = () => {
   if (lastClick >= (Date.now() - delay))
     return;
   lastClick = Date.now();
@@ -296,13 +296,7 @@ const setInterval = () => {
 }
 
 
-// const callSomething = () => {
-//     return console.log("hello")
-// }
 
 
-
-
-// audioOutput.addEventListener("click", startAudio);
-audioOutput.addEventListener("click", setInterval);
+// audioPlay.addEventListener("click", setTimeUnavailable);
 stopAudioPlay.addEventListener("click", stopAudio);
