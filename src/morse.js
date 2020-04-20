@@ -298,5 +298,5 @@ const setTimeUnavailable = () => {
 
 
 
-// audioPlay.addEventListener("click", setTimeUnavailable);
+audioPlay.addEventListener("click", setTimeUnavailable);
 stopAudioPlay.addEventListener("click", stopAudio);

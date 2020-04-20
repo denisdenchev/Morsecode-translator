@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Morse Code Translator</title>
-    <script src="morse.js" async defer></script>
-    <script src="https://kit.fontawesome.com/c6d689a9c6.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
@@ -35,11 +37,13 @@
       <div id="outputArea">
         <h2 >Your translated value:</h2>
         <div id="audioIcons">
-          <button type="button"  id="audioPlay" onclick="setTimeUnavailable()">Click <span class="fas fa-volume-up"></span> to hear the output.</button>
+          <button type="button"  id="audioPlay" >Click <span class="fas fa-volume-up"></span> to hear the output.</button>
           <button type="button"  id="stopAudioPlay">Click <span class="fas fa-volume-mute"></span> to stop listening.</button>
         </div>
         <h3 id="output"></h3>
       </div>
     </main>
+    <script src="morse.js" ></script>
+    <script src="https://kit.fontawesome.com/c6d689a9c6.js" crossorigin="anonymous"></script>
   </body>
 </html>
