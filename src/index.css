@@ -163,6 +163,15 @@ main #outputArea .fas:hover {
   cursor: pointer;
 }
 
+footer {
+  text-align: center;
+  background-color: #000;
+}
+
+footer p {
+  color: #eeeeee;
+}
+
 @media only screen and (min-width: 768px) {
   main {
     height: 100vh;

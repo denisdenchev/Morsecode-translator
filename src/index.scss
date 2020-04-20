@@ -173,6 +173,15 @@ main {
     }
 }
 
+footer {
+    text-align: center;
+    background-color: #000;
+        
+    p {
+        color: #eeeeee;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     main {
         height: 100vh;
