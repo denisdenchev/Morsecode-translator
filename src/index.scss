@@ -184,7 +184,7 @@ footer {
 
 @media only screen and (min-width: 768px) {
     main {
-        height: 100vh;
+        // height: 100vh;
     }
     #inputArea {
         input {
@@ -194,6 +194,12 @@ footer {
 } 
 
 @media only screen and (min-width: 1024px) {
+
+    main {
+        height: 100vh;
+        overflow: hidden;
+    }
+
     #inputArea, #instructions, #outputArea {
         width: 80%;
     }
