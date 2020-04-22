@@ -78,4 +78,6 @@ After that a firebase deploy command need to be run in order for the server to b
 * Stack Overflow
 * Kalin Dimitrov - Helped me when I got stuck at a point and after researching the web for help about my issue, I had to reach out to him. With the experience he has it only took him 10 minutes to point me out in the right direction.
 
+* https://github.com/kalinsky?fbclid=IwAR397EX9sGfzRi-8ZpTbr3gNXQiR7MtIva0as15Ubl92-au9P-4Ap0NKLJE
+
 
